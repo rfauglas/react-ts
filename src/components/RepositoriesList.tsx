@@ -16,7 +16,7 @@ const RepositoriesList: React.FC = () => {
     return <div>
         <form onSubmit={onSubmit}>
             <input value={term} onChange={(e) => setTerm(e.target.value)} />
-            <button >Search</button>
+            <button data-testid="search.package">Search</button>
         </form>
         {error && <h3>{error}</h3>}
         {loading && <h3>Loading</h3>}
