@@ -1,0 +1,24 @@
+name: Echo Environment Variables
+
+on:
+  pull_request:
+#     branches:
+#       - main
+
+jobs:
+  echo_env:
+    runs-on: ubuntu-latest
+    env:
+      test_string: ${{ github.event.inputs.test_string }}
+      test_boolean: ${{ github.event.inputs.test_boolean }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Echo test_string
+        if: env.test_string != ''
+        run: echo "Test String: ${{ env.test_string }}"
+
+      - name: Echo test_string if test_boolean is true
+        if: env.test_boolean == 'true'
+        run: echo "Test String: ${{ env.test_string }}"
